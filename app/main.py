@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from config import FASTAPI
+from config import fastapi_settings
 
 app = FastAPI(
-    title=FASTAPI.APP_TITLE,
-    description=FASTAPI.APP_DESCRIPTION,
-    contact=FASTAPI.APP_CONTACTS,
-    openapi_tags=FASTAPI.TAGS_METADATA
+    title=fastapi_settings.app_title,
+    description=fastapi_settings.app_description,
+    contact=fastapi_settings.app_contacts,
+    openapi_tags=fastapi_settings.tags_metadata
 )
 
 
