@@ -1,4 +1,3 @@
-# app/models/schemas.py
 from pydantic import BaseModel, EmailStr
 
 
@@ -16,7 +15,7 @@ class UserResponse(UserBase):
     is_active: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class TaskBase(BaseModel):
@@ -33,4 +32,4 @@ class TaskResponse(TaskBase):
     is_completed: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True

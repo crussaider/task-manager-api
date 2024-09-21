@@ -1,10 +1,12 @@
-from databases import Database
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import MetaData
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-from ..config import database_settings
+from app.config import database_settings
 
 DATABASE_URL = database_settings.db_url
 
-database = Database(DATABASE_URL)
-engine = create_engine(DATABASE_URL)
+engine = create_async_engine(DATABASE_URL)
+SessionLocal = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
 metadata = MetaData()
+Base = declarative_base()

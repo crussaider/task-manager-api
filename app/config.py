@@ -13,6 +13,14 @@ class FastAPISettings(BaseSettings):
             "name": "root",
             "description": "Начальная страница.",
         },
+        {
+            "name": "users",
+            "description": "Пользователи.",
+        },
+        {
+            "name": "tasks",
+            "description": "Задачи.",
+        }
     ]
 
     class Config:
@@ -22,9 +30,9 @@ class FastAPISettings(BaseSettings):
 class DatabaseSettings(BaseSettings):
     __db_login: str = "postgres"
     __db_password: str = "password"
-    __db_host: str = "localhost"
+    __db_host: str = "db"
     __db_name: str = "task_management"
-    db_url: str = f"postgresql://{__db_login}:{__db_password}@{__db_host}/{__db_name}"
+    db_url: str = f"postgresql+asyncpg://{__db_login}:{__db_password}@{__db_host}/{__db_name}"
 
     class Config:
         env_prefix = "DATABASE_"
