@@ -1,5 +1,9 @@
 from app.db.database import SessionLocal
 from sqlalchemy.ext.asyncio import AsyncSession
+from passlib.context import CryptContext
+
+# Хеширование пароля
+HASH_CONTEXT = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 async def get_db() -> AsyncSession:
